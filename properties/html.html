@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Properties</title>
+    <link rel="style" href="./style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            direction: rtl; /* توجيه النصوص إلى اليمين للغة العربية */
+        }
+        .mt-table {
+            background-color: white;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            justify-content: center;
+            width: 80%;
+        }
+        table {
+            text-align: center;
+            width: 100%;
+            border-collapse: collapse; /* لدمج حدود الجدول */
+        }
+        table thead {
+            background-color: aqua;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #000; /* إضافة حدود لخلايا الجدول */
+        }
+        table th {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            height: 40px;
+        }
+        table tbody {
+            background-color: beige;
+        }
+        .text {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-content: center;
+        }
+        .text ul {
+            line-height: 1.6; /* زيادة المسافة بين الأسطر داخل القائمة */
+        }
+        .text li {
+            margin-bottom: 8px; /* تقليل المسافة بين العناصر داخل القائمة */
+        }
+        .imges {
+            display: flex;
+            justify-content: center; /* توسيط الصور أفقيًا */
+            margin-bottom: 30px;
+        }
+        .imges img {
+            width: 150px;
+            margin: 0px 50px; /* تباعد بين الصور */
+        }
+        .details-row {
+            display: none; /* إخفاء الصفوف التفاصيلية افتراضيًا */
+        }
+    </style>
+</head>
+<body>
+    <section class="mt-table">
+        <div class="container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>المدينة</th>
+                        <th>تفاصيل</th>
+                        <th> الإيجار الشهري</th>
+                        <th>إظهار التفاصيل</th>
+                        <th>الاختيار</th>
+                    </tr>
+                </thead>
+                <tbody id="flats"> 
+                    <tr>
+                        <td> دمشق</td>
+                        <td> شقة غرفة وصالة 70م</td>
+                        <td>  500000 </td>
+                        <td><input type="checkbox" class="show-details"></td>
+                        <td><input type="radio"></td>
+                    </tr>
+                    <tr class="details-row"> 
+                        <td colspan="5"> 
+                            <div class="info">
+                                <ul class="text">
+                                    <li> المنطقة: ركن الدين</li>
+                                    <li> متوفر كراج</li>
+                                    <li> الطابق الثالث </li>
+                                    <li> الملكية: طابو </li>
+                                    <li> بلكون12م </li>
+                                    <li> مفروشة </li>
+                                    <li>
+                                        <div class="imges">
+                                            <img src="./Ho-333.jpg">
+                                            <img src="./Ho-5.jpg">
+                                            <img src="./Ho-2.jpg">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td> دمشق</td>
+                        <td> شقة مساحة 200م</td>
+                        <td>250000</td>
+                        <td> <input type="checkbox" class="show-details"></td>
+                        <td><input type="radio"></td>
+                    </tr>                
+                    <tr class="details-row">
+                        <td colspan="5">
+                            <div class="info">
+                                <ul class="text">
+                                    <li> المنطقة: شارع العابد </li>
+                                    <li> متوفر كراج </li>
+                                    <li> الطابق الأول</li>
+                                    <li>الملكية: طابو  </li>
+                                    <li> بلكون 10م </li>
+                                    <li> مفروشة</li>
+                                    <li>
+                                        <div class="imges">
+                                            <img src="./تنزيل (21).jpeg">
+                                            <img src="./تنزيل (25).jpeg">
+                                            <img src="./تنزيل (28).jpeg">
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script>
+        // حدث النقر لاظهار التفاصيل
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkboxes = document.querySelectorAll('.show-details');
+
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    const detailsRow = this.parentNode.parentNode.nextElementSibling;
+                    if (this.checked) {
+                        detailsRow.style.display = 'table-row';
+                    } else {
+                        detailsRow.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
